@@ -2,7 +2,7 @@
 if (document.getElementById("lakewood-bookings-script")) {
 }
 
-// Function to either book/remove a tennis court at Lakewood Tennis Club
+// Function to either book/remove a tennis court at Lakewood Tennis Club for any timeslot
 async function bookLakewoodCourt(id, fieldName, isBooked) {
   // If the court is booked
   if (isBooked == 1) {
