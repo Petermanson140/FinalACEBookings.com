@@ -1,0 +1,82 @@
+// Defining the package and all imports for the Lakewood Tennis Club Service
+package com.example.myapp.services;
+
+//Importing all the necessary classes and packages 
+import com.example.myapp.model.LakewoodTennisClub;
+import com.example.myapp.repositories.LakewoodTennisClubRepository;
+import org.springframework.stereotype.Service;
+import java.util.List;
+
+// Defining a service for dealing with the business logic which are related to the Lakewood Tennis Club entities
+@Service
+public class LakewoodTennisClubService {
+    // Defining a private field for the Lakewood Tennis Club Repository
+    private final LakewoodTennisClubRepository lakewoodTennisClubRepository;
+
+    // Creating a constructor for the Lakewood Tennis Club Repository
+    public LakewoodTennisClubService(LakewoodTennisClubRepository lakewoodTennisClubRepository) {
+        this.lakewoodTennisClubRepository = lakewoodTennisClubRepository;
+    }
+
+    // Methods to fetch Lakewood Tennis Club data by various entities
+    public List<LakewoodTennisClub> fetchTennisClubDataBySurface(String surface) {
+        return lakewoodTennisClubRepository.findBySurface(surface);
+    }
+
+    public List<LakewoodTennisClub> fetchTennisClubDataBySurfaceAndEnvironment(String surface, String environment) {
+        return lakewoodTennisClubRepository.findBySurfaceAndEnvironment(surface, environment);
+    }
+
+    public List<LakewoodTennisClub> fetchTennisClubDataBySurfaceAndHours(String surface, String hours) {
+        return lakewoodTennisClubRepository.findBySurfaceAndHours(surface, hours);
+    }
+
+    public List<LakewoodTennisClub> fetchTennisClubDataBySurfaceAndHoursAndEnvironment(String surface, String hours,
+            String environment) {
+        return lakewoodTennisClubRepository.findBySurfaceAndHoursAndEnvironment(surface, hours, environment);
+    }
+
+    public List<LakewoodTennisClub> fetchTennisClubDataBySurfaceAndHoursAndEnvironmentAndAvailability(
+            String surface, String hours, String environment, String availability) {
+        return lakewoodTennisClubRepository.findBySurfaceAndHoursAndEnvironmentAndAvailability(surface, hours,
+                environment, availability);
+    }
+
+    // Method for automatically updating a specific time slot field for lakewood
+    // tennis club
+    public void updateField(Integer id, String fieldName, Boolean value) {
+        LakewoodTennisClub ltc = lakewoodTennisClubRepository.findById(id).orElseThrow(IllegalArgumentException::new);
+
+        switch (fieldName) {
+            case "12to1":
+                ltc.setTwelveToOne(value);
+                break;
+            case "1to2":
+                ltc.setOneToTwo(value);
+                break;
+            case "2to3":
+                ltc.setTwoToThree(value);
+                break;
+            case "3to4":
+                ltc.setThreeToFour(value);
+                break;
+            case "4to5":
+                ltc.setFourToFive(value);
+                break;
+            case "5to6":
+                ltc.setFiveToSix(value);
+                break;
+            case "6to7":
+                ltc.setSixToSeven(value);
+                break;
+            case "7to8":
+                ltc.setSevenToEight(value);
+                break;
+            default:
+                throw new IllegalArgumentException("Invalid Field name");
+
+        }
+        // Saving the updated time slot back to the repository
+        lakewoodTennisClubRepository.save(ltc);
+    }
+}
