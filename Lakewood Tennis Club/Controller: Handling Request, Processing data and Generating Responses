@@ -1,0 +1,62 @@
+// Defining the package and all imports for the Lakewood Tennis Club Controller 
+package com.example.myapp.controller;
+
+//Importing all the necessary classes and packages 
+import com.example.myapp.model.LakewoodTennisClub;
+import com.example.myapp.repositories.LakewoodTennisClubRepository;
+import com.example.myapp.services.LakewoodTennisClubService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+import java.util.Collections;
+import java.util.List;
+
+// Defining the rest controller for handling all of the related Lakewood Tennis Club requests
+@RestController
+@RequestMapping("/api")
+// Allowing cross-origin requests from all origins
+@CrossOrigin(origins = "*")
+public class LakewoodTennisClubController {
+    // Autowiring the Lakewood Tennis Club Repository
+    @Autowired
+    private LakewoodTennisClubRepository lakewoodTennisClubRepository;
+    // Autowiring the Lakewood Tennis Club service
+    @Autowired
+    private LakewoodTennisClubService lakewoodTennisClubService;
+
+    // Fetches Lakewood Tennis Club courts by multiple search criterias
+    @GetMapping("/lakewoodtennisclub")
+    public List<LakewoodTennisClub> getLakewoodTennisCourtsBySurfaceAndHoursAndEnvironmentAndAvailability(
+            @RequestParam(value = "surface", required = true) String surface,
+            @RequestParam(value = "hours", required = true) String hours,
+            @RequestParam(value = "environment", required = true) String environment,
+            @RequestParam(value = "availability", required = true) String availability) {
+
+        // Checking to see if all search parameters are provided 
+        if (!surface.isEmpty() && !hours.isEmpty() && !environment.isEmpty() && !availability.isEmpty()) {
+            // Fetches the courts based on the provided criterias
+            return lakewoodTennisClubRepository.findBySurfaceAndHoursAndEnvironmentAndAvailability(
+                    surface.toLowerCase(), hours, environment.toLowerCase(), availability);
+        } else {
+            // If any of the parameters are missing, it will return an empty list
+            return Collections.emptyList();
+        }
+    }
+
+    // Updates Lakewood tennis club slots
+    @CrossOrigin(origins = "*")
+    @PatchMapping("/lakewoodtennisclub/{id}")
+    public LakewoodTennisClub updateLakewoodTennisClubSlots(
+            @PathVariable(value = "id") Integer lwtcId,
+            @RequestParam(value = "fieldName", required = true) String fieldName,
+            @RequestParam(value = "value", required = true) Boolean value) {
+
+        LakewoodTennisClub ltc = lakewoodTennisClubRepository.findById(lwtcId)
+                .orElseThrow(IllegalArgumentException::new);
+
+        lakewoodTennisClubService.updateField(lwtcId, fieldName, value);
+
+        return ltc;
+
+    }
+
+}
