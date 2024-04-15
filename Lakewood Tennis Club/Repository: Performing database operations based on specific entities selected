@@ -1,0 +1,28 @@
+// Defining the package and all imports for the Lakewood Tennis Club Repository
+package com.example.myapp.repositories;
+
+//Importing all the necessary classes and packages 
+import com.example.myapp.model.LakewoodTennisClub;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+import java.util.List;
+
+// Defining a repository for LakewoodTennisClub entities in the model file
+@Repository
+// Extending the JpaRepository, specifying the exact entity type which is
+// Lakewood Tennis Club and the primary key type which is an Integer
+public interface LakewoodTennisClubRepository extends JpaRepository<LakewoodTennisClub, Integer> {
+    // Defining the query methods to find the Lakewood Tennis Club entities by
+    // different criterias shown below
+    List<LakewoodTennisClub> findBySurface(String surface);
+
+    List<LakewoodTennisClub> findBySurfaceAndHours(String surface, String hours);
+
+    List<LakewoodTennisClub> findBySurfaceAndEnvironment(String surface, String environment);
+
+    List<LakewoodTennisClub> findBySurfaceAndHoursAndEnvironment(String surface, String hours, String environment);
+
+    List<LakewoodTennisClub> findBySurfaceAndHoursAndEnvironmentAndAvailability(String surface, String hours,
+            String environment, String availability);
+
+}
