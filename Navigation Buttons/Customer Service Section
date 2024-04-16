@@ -1,0 +1,15 @@
+function scrollToCustomerserviceSection(event) {
+  event.preventDefault();
+
+  const customerserviceSection = document.getElementById("customerservice");
+  customerserviceSection.scrollIntoView({
+    behavior: "smooth",
+    block: "start",
+    inline: "nearest",
+  });
+}
+// Selecting the fourth navigation button at the top of the webpage
+const customerserviceButton = document.querySelectorAll(
+  ".navigation-buttons"
+)[3];
+customerserviceButton.addEventListener("click", scrollToCustomerserviceSection);
