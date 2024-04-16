@@ -1,0 +1,29 @@
+// Defining the package and all imports for the Royal Tennis Club Repository
+package com.example.myapp.repositories;
+
+//Importing all the necessary classes and packages 
+import com.example.myapp.model.RoyalTennisClub;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+import java.util.List;
+
+// Defining a repository for Royal tennis Club entities in the model file
+@Repository
+// Extending the JpaRepository, specifying the exact entity type which is
+// Royal Tennis Club and the primary key type which is an Integer
+public interface RoyalTennisClubRepository extends JpaRepository<RoyalTennisClub, Integer> {
+
+    // Defining the query methods to find the Royal Tennis Club entities by
+    // different criterias shown below
+    List<RoyalTennisClub> findBySurface(String surface);
+
+    List<RoyalTennisClub> findBySurfaceAndHours(String surface, String hours);
+
+    List<RoyalTennisClub> findBySurfaceAndEnvironment(String surface, String environment);
+
+    List<RoyalTennisClub> findBySurfaceAndHoursAndEnvironment(String surface, String hours, String environment);
+
+    List<RoyalTennisClub> findBySurfaceAndHoursAndEnvironmentAndAvailability(String surface, String hours,
+            String environment, String availability);
+
+}
