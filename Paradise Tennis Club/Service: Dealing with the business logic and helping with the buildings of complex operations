@@ -1,0 +1,81 @@
+// Defining the package and all imports for the Paradise Tennis Club Service
+package com.example.myapp.services;
+
+// Importing all the necessary classes and packages 
+import com.example.myapp.model.ParadiseTennisClub;
+import com.example.myapp.repositories.ParadiseTennisClubRepository;
+import org.springframework.stereotype.Service;
+import java.util.List;
+
+// Defining a service for dealing with the business logic related to the Paradise Tennis Club entities
+@Service
+public class ParadiseTennisClubService {
+    // Defining a private field for the Paradise Tennis Club Repository
+    private final ParadiseTennisClubRepository paradiseTennisClubRepository;
+
+    // Creating a constructor for the Paradise Tennis Club Repository
+    public ParadiseTennisClubService(ParadiseTennisClubRepository paradiseTennisClubRepository) {
+        this.paradiseTennisClubRepository = paradiseTennisClubRepository;
+    }
+
+    // Methods to fetch Paradise Tennis Club data by various entities
+    public List<ParadiseTennisClub> fetchTennisClubDataBySurface(String surface) {
+        return paradiseTennisClubRepository.findBySurface(surface);
+    }
+
+    public List<ParadiseTennisClub> fetchTennisClubDataBySurfaceAndEnvironment(String surface, String environment) {
+        return paradiseTennisClubRepository.findBySurfaceAndEnvironment(surface, environment);
+    }
+
+    public List<ParadiseTennisClub> fetchTennisClubDataBySurfaceAndHours(String surface, String hours) {
+        return paradiseTennisClubRepository.findBySurfaceAndHours(surface, hours);
+    }
+
+    public List<ParadiseTennisClub> fetchTennisClubDataBySurfaceAndHoursAndEnvironment(String surface, String hours,
+            String environment) {
+        return paradiseTennisClubRepository.findBySurfaceAndHoursAndEnvironment(surface, hours, environment);
+    }
+
+    public List<ParadiseTennisClub> fetchTennisClubDataBySurfaceAndHoursAndEnvironmentAndAvailability(
+            String surface, String hours, String environment, String availability) {
+        return paradiseTennisClubRepository.findBySurfaceAndHoursAndEnvironmentAndAvailability(surface, hours,
+                environment, availability);
+    }
+
+    // Method for automatically updating a specific time slot field for Paradise Tennis Club
+    public void updateField(Integer id, String fieldName, Boolean value) {
+        ParadiseTennisClub ptc = paradiseTennisClubRepository.findById(id).orElseThrow(IllegalArgumentException::new);
+
+        switch (fieldName) {
+            case "12to1":
+                ptc.setTwelveToOne(value);
+                break;
+            case "1to2":
+                ptc.setOneToTwo(value);
+                break;
+            case "2to3":
+                ptc.setTwoToThree(value);
+                break;
+            case "3to4":
+                ptc.setThreeToFour(value);
+                break;
+            case "4to5":
+                ptc.setFourToFive(value);
+                break;
+            case "5to6":
+                ptc.setFiveToSix(value);
+                break;
+            case "6to7":
+                ptc.setSixToSeven(value);
+                break;
+            case "7to8":
+                ptc.setSevenToEight(value);
+                break;
+            default:
+                throw new IllegalArgumentException("Invalid Field name");
+
+        }
+        // Saving the updated time slot back to the repository
+        paradiseTennisClubRepository.save(ptc);
+    }
+}
