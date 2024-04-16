@@ -1,0 +1,13 @@
+function scrollToCareersSection(event) {
+  event.preventDefault();
+
+  const careersSection = document.getElementById("careers");
+  careersSection.scrollIntoView({
+    behavior: "smooth",
+    block: "start",
+    inline: "nearest",
+  });
+}
+// Selecting the second navigation button at the top of the webpage
+const careersButton = document.querySelectorAll(".navigation-buttons")[1];
+careersButton.addEventListener("click", scrollToCareersSection);
