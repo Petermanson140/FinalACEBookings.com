@@ -1,0 +1,59 @@
+// Defining the package and all imports for the Royal Tennis Club Controller 
+package com.example.myapp.controller;
+//Importing all the necessary classes and packages 
+import com.example.myapp.model.RoyalTennisClub;
+import com.example.myapp.repositories.RoyalTennisClubRepository;
+import com.example.myapp.services.RoyalTennisClubService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+import java.util.Collections;
+import java.util.List;
+
+// Defining the rest controller for handling all of the related Royal Tennis Club requests
+@RestController
+@RequestMapping("/api")
+// Allowing cross-origin requests from all origins
+@CrossOrigin(origins = "*")
+public class RoyalTennisClubController {
+ // Autowiring the Royal Tennis Club Repository
+    @Autowired
+    private RoyalTennisClubRepository royalTennisClubRepository;
+// Autowiring the Lakewood Tennis Club service
+    @Autowired
+    private RoyalTennisClubService royalTennisClubService;
+// Fetches Royal Tennis Club courts by multiple search criterias
+    @GetMapping("/royaltennisclub")
+    public List<RoyalTennisClub> getRoyalTennisCourtsBySurfaceAndHoursAndEnvironmentAndAvailability(
+            @RequestParam(value = "surface", required = true) String surface,
+            @RequestParam(value = "hours", required = true) String hours,
+            @RequestParam(value = "environment", required = true) String environment,
+            @RequestParam(value = "availability", required = true) String availability) {
+
+        // Checking to see if all search parameters are provided 
+        if (!surface.isEmpty() && !hours.isEmpty() && !environment.isEmpty() && !availability.isEmpty()) {
+            // Fetch courts based on the provided criteria and availability
+            return royalTennisClubRepository.findBySurfaceAndHoursAndEnvironmentAndAvailability(
+                    surface.toLowerCase(), hours, environment.toLowerCase(), availability);
+        } else {
+            // If any of the parameters are missing, it will return an empty list
+            return Collections.emptyList();
+        }
+    }
+
+    @CrossOrigin(origins = "*")
+// Updates Royal tennis club slots
+    @PatchMapping("/royaltennisclub/{id}")
+    public RoyalTennisClub updateRoyalTennisClubSlots(
+            @PathVariable(value = "id") Integer rtcId,
+            @RequestParam(value = "fieldName", required = true) String fieldName,
+            @RequestParam(value = "value", required = true) Boolean value) {
+
+        RoyalTennisClub rtc = royalTennisClubRepository.findById(rtcId)
+                .orElseThrow(IllegalArgumentException::new);
+
+        royalTennisClubService.updateField(rtcId, fieldName, value);
+
+        return rtc;
+    }
+
+}
