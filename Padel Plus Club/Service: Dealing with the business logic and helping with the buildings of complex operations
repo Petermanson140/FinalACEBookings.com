@@ -1,0 +1,83 @@
+// Defining the package and all imports for the Padel Plus Club Service
+package com.example.myapp.services;
+
+// Importing all the necessary classes and packages 
+import com.example.myapp.model.PadelPlusClub;
+import com.example.myapp.repositories.PadelPlusClubRepository;
+import org.springframework.stereotype.Service;
+import java.util.List;
+
+// Defining a service for dealing with the business logic which are related to the Padel Plus Club entities
+@Service
+public class PadelPlusClubService {
+
+    // Defining a private field for the Padel Plus Club Repository
+    private final PadelPlusClubRepository padelPlusClubRepository;
+
+    // Creating a constructor for the Padel Plus Club Repository
+    public PadelPlusClubService(PadelPlusClubRepository padelPlusClubRepository) {
+        this.padelPlusClubRepository = padelPlusClubRepository;
+    }
+
+    // Methods to fetch Padel Plus Club data by various entities
+    public List<PadelPlusClub> fetchTennisClubDataBySurface(String surface) {
+        return padelPlusClubRepository.findBySurface(surface);
+    }
+
+    public List<PadelPlusClub> fetchTennisClubDataBySurfaceAndEnvironment(String surface, String environment) {
+        return padelPlusClubRepository.findBySurfaceAndEnvironment(surface, environment);
+    }
+
+    public List<PadelPlusClub> fetchTennisClubDataBySurfaceAndHours(String surface, String hours) {
+        return padelPlusClubRepository.findBySurfaceAndHours(surface, hours);
+    }
+
+    public List<PadelPlusClub> fetchTennisClubDataBySurfaceAndHoursAndEnvironment(String surface, String hours,
+            String environment) {
+        return padelPlusClubRepository.findBySurfaceAndHoursAndEnvironment(surface, hours, environment);
+    }
+
+    public List<PadelPlusClub> fetchTennisClubDataBySurfaceAndHoursAndEnvironmentAndAvailability(
+            String surface, String hours, String environment, String availability) {
+        return padelPlusClubRepository.findBySurfaceAndHoursAndEnvironmentAndAvailability(surface, hours,
+                environment, availability);
+    }
+
+    // Method for automatically updating a specific time slot field for Padel Plus
+    // Club
+    public void updateField(Integer id, String fieldName, Boolean value) {
+        PadelPlusClub ppc = padelPlusClubRepository.findById(id).orElseThrow(IllegalArgumentException::new);
+
+        switch (fieldName) {
+            case "12to1":
+                ppc.setTwelveToOne(value);
+                break;
+            case "1to2":
+                ppc.setOneToTwo(value);
+                break;
+            case "2to3":
+                ppc.setTwoToThree(value);
+                break;
+            case "3to4":
+                ppc.setThreeToFour(value);
+                break;
+            case "4to5":
+                ppc.setFourToFive(value);
+                break;
+            case "5to6":
+                ppc.setFiveToSix(value);
+                break;
+            case "6to7":
+                ppc.setSixToSeven(value);
+                break;
+            case "7to8":
+                ppc.setSevenToEight(value);
+                break;
+            default:
+                throw new IllegalArgumentException("Invalid Field name");
+        }
+
+        padelPlusClubRepository.save(ppc);
+    }
+
+}
