@@ -1,0 +1,154 @@
+// Retrieving the data from the Lakewood Tennis Club API based on specific parameters
+async function fetchLakewoodTennisClubData(
+  surface,
+  hours,
+  environment,
+  availability
+) {
+  // Creating the URL link for the API request
+  const url = `http://localhost:8080/api/lakewoodtennisclub?surface=${surface}&hours=${hours}&environment=${environment}&availability=${availability}`;
+  // Sending a fetch request to the API
+  const response = await fetch(url);
+
+  // An error message will be displayed if retrieving the lakewood tennis club data is unsuccessful
+  if (!response.ok) {
+    throw new Error("Failed to fetch the data from the database server.");
+  }
+
+  // Parses and returns the JSON data from the response
+  return response.json();
+}
+
+// Displaying the tennis club data retrieved from the Lakewood Tennis Club API
+function displayLakewoodTennisClubData(data) {
+  // Retrieving the data container element by the ID
+  const dataContainer = document.getElementById("DataContainer");
+  // Clears the previous contents of the data container
+  dataContainer.innerHTML = "";
+  // Setting the data container background to white
+  dataContainer.style.backgroundColor = "white";
+  // Checking if the tennis club data is an array and contains all the elements/column names
+  if (Array.isArray(data) && data.length > 0) {
+    // Looping through the tennis clubs data in the database and time slots and displaying it all inside a data container
+    data.forEach((club) => {
+      dataContainer.innerHTML += `
+              <p><strong>Club Name:</strong> ${club.name}</p>
+              <p><strong>Location:</strong> ${club.location}</p>
+              <p><strong>Court Number:</strong> ${club.number}</p>
+              <p><strong>BookingCourt Id:</strong> ${club.id}</p>
+              <p><strong>Surface:</strong> ${club.surface}</p>
+              <p><strong>Indoors/Outdoors:</strong> ${club.environment}</p>
+              <p><strong>Available Time Slots: Please click on an available 1 hour time slot below</strong></p>
+            <div class="time-slot-items">
+            <button 
+            class="time-slot-button ${
+              club["twelveToOne"] == 1 ? "booked" : "available"
+            }" 
+            data-club-name="lakewoodtennisclub"
+            data-id="1" 
+            data-time-slot="twelveToOne"
+            onclick="bookLakewoodCourt(${club.id},'12to1','1')"
+            ${club["twelveToOne"] == 1 ? "disabled" : ""}
+        >
+            12to1 ${club["twelveToOne"] == 0 ? "(Available)" : "(Booked)"}
+        </button>
+        
+        <button 
+            class="time-slot-button ${
+              club["oneToTwo"] == 1 ? "booked" : "available"
+            }" 
+            data-club-name="lakewoodtennisclub"
+            data-id="2" 
+            data-time-slot="oneToTwo"
+            onclick="bookLakewoodCourt(${club.id},'1to2','1')"
+            ${club["oneToTwo"] == 1 ? "disabled" : ""}
+        >
+            1to2 ${club["oneToTwo"] == 0 ? "(Available)" : "(Booked)"}
+        </button>
+        
+        <button 
+            class="time-slot-button ${
+              club["twoToThree"] == 1 ? "booked" : "available"
+            }" 
+            data-club-name="lakewoodtennisclub"
+            data-id="3" 
+            data-time-slot="twoToThree"
+            onclick="bookLakewoodCourt(${club.id},'2to3','1')"
+            ${club["twoToThree"] == 1 ? "disabled" : ""}
+        >
+            2to3 ${club["twoToThree"] == 0 ? "(Available)" : "(Booked)"}
+        </button>
+        
+        <button 
+            class="time-slot-button ${
+              club["threeToFour"] == 1 ? "booked" : "available"
+            }" 
+            data-club-name="lakewoodtennisclub"
+            data-id="4" 
+            data-time-slot="threeToFour"
+            onclick="bookLakewoodCourt(${club.id},'3to4','1')"
+            ${club["threeToFour"] == 1 ? "disabled" : ""}
+        >
+            3to4 ${club["threeToFour"] == 0 ? "(Available)" : "(Booked)"}
+        </button>
+        
+        <button 
+            class="time-slot-button ${
+              club["fourToFive"] == 1 ? "booked" : "available"
+            }" 
+            data-club-name="lakewoodtennisclub"
+            data-id="5" 
+            data-time-slot="fourToFive"
+            onclick="bookLakewoodCourt(${club.id},'4to5','1')"
+            ${club["fourToFive"] == 1 ? "disabled" : ""}
+        >
+            4to5 ${club["fourToFive"] == 0 ? "(Available)" : "(Booked)"}
+        </button>
+        
+        <button 
+            class="time-slot-button ${
+              club["fiveToSix"] == 1 ? "booked" : "available"
+            }" 
+            data-club-name="lakewoodtennisclub"
+            data-id="6" 
+            data-time-slot="fiveToSix"
+            onclick="bookLakewoodCourt(${club.id},'5to6','1')"
+            ${club["fiveToSix"] == 1 ? "disabled" : ""}
+        >
+            5to6 ${club["fiveToSix"] == 0 ? "(Available)" : "(Booked)"}
+        </button>
+        
+        <button 
+            class="time-slot-button ${
+              club["sixToSeven"] == 1 ? "booked" : "available"
+            }" 
+            data-club-name="lakewoodtennisclub"
+            data-id="7" 
+            data-time-slot="sixToSeven"
+            onclick="bookLakewoodCourt(${club.id},'6to7','1')"
+            ${club["sixToSeven"] == 1 ? "disabled" : ""}
+        >
+            6to7 ${club["sixToSeven"] == 0 ? "(Available)" : "(Booked)"}
+        </button>
+        
+        <button 
+            class="time-slot-button ${
+              club["sevenToEight"] == 1 ? "booked" : "available"
+            }" 
+            data-club-name="lakewoodtennisclub"
+            data-id="8" 
+            data-time-slot="sevenToEight"
+            onclick="bookLakewoodCourt(${club.id},'7to8','1')"
+            ${club["sevenToEight"] == 1 ? "disabled" : ""}
+        >
+            7to8 ${club["sevenToEight"] == 0 ? "(Available)" : "(Booked)"}
+        </button>
+        
+  </div>
+            <hr>`;
+    });
+  } else {
+    // Displaying a message to the user if no courts are available at all
+    dataContainer.innerHTML += `<p><strong>No courts are available</strong></p>`;
+  }
+}
