@@ -1,0 +1,34 @@
+//Choosing the relevant elements by their id once the DOM content has fully loaded
+document.addEventListener("DOMContentLoaded", function () {
+  const surfaceDropdown = document.getElementById("Surface");
+  const clayImage = document.getElementById("clayImage");
+  const hardImage = document.getElementById("hardImage");
+  const grassImage = document.getElementById("grassImage");
+  const padelImage = document.getElementById("padelImage");
+  const defaultImage = document.getElementById("defaultImage");
+
+  //Retrieving the dropdown element for the selection of the tennis surface
+  surfaceDropdown.addEventListener("change", function () {
+    const selectedSurface = surfaceDropdown.value;
+
+    // Hiding all images to start with
+    clayImage.style.display = "none";
+    hardImage.style.display = "none";
+    grassImage.style.display = "none";
+    padelImage.style.display = "none";
+    defaultImage.style.display = "none";
+
+    //Retrieving and displaying the selected image based on the surface chosen from the drop down list on the front end
+    if (selectedSurface === "Clay") {
+      clayImage.style.display = "block";
+    } else if (selectedSurface === "Hard") {
+      hardImage.style.display = "block";
+    } else if (selectedSurface === "Grass") {
+      grassImage.style.display = "block";
+    } else if (selectedSurface === "Padel") {
+      padelImage.style.display = "block";
+    } else {
+      defaultImage.style.display = "block";
+    }
+  });
+});
