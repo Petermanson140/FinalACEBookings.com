@@ -1,0 +1,61 @@
+// Defining the package and all imports for the Lakewood Tennis Club Controller 
+package com.example.myapp.controller;
+
+//Importing all the necessary classes and packages 
+import com.example.myapp.model.PadelPlusClub;
+import com.example.myapp.repositories.PadelPlusClubRepository;
+import com.example.myapp.services.PadelPlusClubService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+import java.util.Collections;
+import java.util.List;
+
+// Defining the rest controller for handling all of the related Padel Plus Lakewood Tennis Club requests
+@RestController
+@RequestMapping("/api")
+// Allowing cross-origin requests from all origins
+@CrossOrigin(origins = "*")
+public class PadelPlusClubController {
+    // Autowiring the Padel Plus Club Repository
+    @Autowired
+    private PadelPlusClubRepository padelPlusClubRepository;
+    // Autowiring the Padel Plus Club service
+    @Autowired
+    private PadelPlusClubService padelPlusClubService;
+
+    // Fetches Padel Plus Club courts by multiple search criterias
+    @GetMapping("/padelplusclub")
+    public List<PadelPlusClub> getPadelPlusCourtsBySurfaceAndHoursAndEnvironmentAndAvailability(
+            @RequestParam(value = "surface", required = true) String surface,
+            @RequestParam(value = "hours", required = true) String hours,
+            @RequestParam(value = "environment", required = true) String environment,
+            @RequestParam(value = "availability", required = true) String availability) {
+
+        // Checking to see if all search parameters are provided
+        if (!surface.isEmpty() && !hours.isEmpty() && !environment.isEmpty() && !availability.isEmpty()) {
+            // Fetch courts based on the provided criteria and availability
+            return padelPlusClubRepository.findBySurfaceAndHoursAndEnvironmentAndAvailability(
+                    surface.toLowerCase(), hours, environment.toLowerCase(), availability);
+        } else {
+            // If any of the parameters are missing, it will return an empty list
+            return Collections.emptyList();
+        }
+    }
+
+    // Updates Padel Plus club slots
+    @CrossOrigin(origins = "*")
+    @PatchMapping("/padelplusclub/{id}")
+    public PadelPlusClub updatePadelplusClubSlots(
+            @PathVariable(value = "id") Integer ppcId,
+            @RequestParam(value = "fieldName", required = true) String fieldName,
+            @RequestParam(value = "value", required = true) Boolean value) {
+
+        PadelPlusClub ppc = padelPlusClubRepository.findById(ppcId)
+                .orElseThrow(IllegalArgumentException::new);
+
+        padelPlusClubService.updateField(ppcId, fieldName, value);
+
+        return ppc;
+    }
+
+}
