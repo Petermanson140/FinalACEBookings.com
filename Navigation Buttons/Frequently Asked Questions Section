@@ -1,0 +1,13 @@
+function scrollToFAQSSection(event) {
+  event.preventDefault();
+
+  const FAQSSection = document.getElementById("FAQS");
+  FAQSSection.scrollIntoView({
+    behavior: "smooth",
+    block: "start",
+    inline: "nearest",
+  });
+}
+// Selecting the fifth navigation button at the top of the webpage
+const FAQSButton = document.querySelectorAll(".navigation-buttons")[4];
+FAQSButton.addEventListener("click", scrollToFAQSSection);
