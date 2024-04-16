@@ -1,0 +1,28 @@
+// Defining the package and all imports for the Padel Plus Club Repository
+package com.example.myapp.repositories;
+
+// Importing all the necessary classes and packages 
+import com.example.myapp.model.PadelPlusClub;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+import java.util.List;
+
+// Defining a repository for PadelPlusClub entities in the model file
+@Repository
+// Extending the JpaRepository, specifying the exact entity type which is
+// Padel Plus Club and the primary key type which is an Integer
+public interface PadelPlusClubRepository extends JpaRepository<PadelPlusClub, Integer> {
+    // Defining the query methods to find the Padel Plus Club entities by
+    // different criteria shown below
+    List<PadelPlusClub> findBySurface(String surface);
+
+    List<PadelPlusClub> findBySurfaceAndHours(String surface, String hours);
+
+    List<PadelPlusClub> findBySurfaceAndEnvironment(String surface, String environment);
+
+    List<PadelPlusClub> findBySurfaceAndHoursAndEnvironment(String surface, String hours, String environment);
+
+    List<PadelPlusClub> findBySurfaceAndHoursAndEnvironmentAndAvailability(String surface, String hours,
+            String environment, String availability);
+
+}
