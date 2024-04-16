@@ -1,0 +1,18 @@
+// Function to handle the smooth scrolling to the About Us section on the webpage
+function scrollToAboutusSection(event) {
+  event.preventDefault(); //Preventing the set default behaviour of the button
+
+  const aboutSection = document.getElementById("aboutUs"); //Retrieving the element for the About Us section
+  aboutSection.scrollIntoView({
+    behavior: "smooth", // Making sure the behaviour of the scroll is smooth
+    block: "start", // Scrolling to the beginning of the about us section
+    inline: "nearest", // Scrolling to the closest side/edge of the about us section
+  });
+}
+// Event listener for the "About Us" navigation button
+const aboutUsButton = document.querySelector(
+  // Selecting the first navigation button at the top of the webpage
+  ".navigation-buttons:nth-child(1)"
+);
+// Adding a click event listener to the About Us navigation button to start the scrolling to the About Us section
+aboutUsButton.addEventListener("click", scrollToAboutusSection);
