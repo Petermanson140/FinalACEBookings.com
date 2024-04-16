@@ -1,0 +1,13 @@
+function scrollToMembershipsSection(event) {
+  event.preventDefault();
+
+  const membershipsSection = document.getElementById("memberships");
+  membershipsSection.scrollIntoView({
+    behavior: "smooth", 
+    block: "start", 
+    inline: "nearest", 
+  });
+}
+// Selecting the third navigation button at the top of the webpage
+const membershipsButton = document.querySelectorAll(".navigation-buttons")[2];
+membershipsButton.addEventListener("click", scrollToMembershipsSection);
