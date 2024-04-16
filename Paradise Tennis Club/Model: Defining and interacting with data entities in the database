@@ -1,0 +1,197 @@
+// Defining the package and all imports for the Paradise Tennis Club Model 
+package com.example.myapp.model;
+
+// Importing all the necessary classes and packages 
+import javax.persistence.*;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+// Defining the entity for Paradise Tennis Club
+@Entity
+// Defining the table name Paradise Tennis Club in the database
+@Table(name = "paradisetennisclub")
+// Entity listeners for auditing
+@EntityListeners(AuditingEntityListener.class)
+// Ignoring the properties during serialization and deserialization
+@JsonIgnoreProperties(allowGetters = true)
+public class ParadiseTennisClub {
+    // Defining the primary key for the entity which is Id
+    @Id
+    // Generates the value for the primary key automatically
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+    // Defining all the fields representing attributes of Paradise Tennis Club
+    private String name;
+    private String location;
+    // Defining all the fields for the specific available time slots for Paradise Tennis Club
+    @Column(name = "12to1")
+    private Boolean twelveToOne;
+
+    @Column(name = "1to2")
+    private Boolean oneToTwo;
+
+    @Column(name = "2to3")
+    private Boolean twoToThree;
+
+    @Column(name = "3to4")
+    private Boolean threeToFour;
+
+    @Column(name = "4to5")
+    private Boolean fourToFive;
+
+    @Column(name = "5to6")
+    private Boolean fiveToSix;
+
+    @Column(name = "6to7")
+    private Boolean sixToSeven;
+
+    @Column(name = "7to8")
+    private Boolean sevenToEight;
+
+    // Defining all the fields representing attributes of Paradise Tennis Club
+    private Integer total;
+    private Integer number;
+    private String surface;
+    private String environment;
+    private String hours;
+    private String availability;
+
+    // Creating getters and setters for all the fields
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public Boolean getTwelveToOne() {
+        return twelveToOne;
+    }
+
+    public void setTwelveToOne(Boolean twelveToOne) {
+        this.twelveToOne = twelveToOne;
+    }
+
+    public Boolean getOneToTwo() {
+        return oneToTwo;
+    }
+
+    public void setOneToTwo(Boolean oneToTwo) {
+        this.oneToTwo = oneToTwo;
+    }
+
+    public Boolean getTwoToThree() {
+        return twoToThree;
+    }
+
+    public void setTwoToThree(Boolean twoToThree) {
+        this.twoToThree = twoToThree;
+    }
+
+    public Boolean getThreeToFour() {
+        return threeToFour;
+    }
+
+    public void setThreeToFour(Boolean threeToFour) {
+        this.threeToFour = threeToFour;
+    }
+
+    public Boolean getFourToFive() {
+        return fourToFive;
+    }
+
+    public void setFourToFive(Boolean fourToFive) {
+        this.fourToFive = fourToFive;
+    }
+
+    public Boolean getFiveToSix() {
+        return fiveToSix;
+    }
+
+    public void setFiveToSix(Boolean fiveToSix) {
+        this.fiveToSix = fiveToSix;
+    }
+
+    public Boolean getSixToSeven() {
+        return sixToSeven;
+    }
+
+    public void setSixToSeven(Boolean sixToSeven) {
+        this.sixToSeven = sixToSeven;
+    }
+
+    public Boolean getSevenToEight() {
+        return sevenToEight;
+    }
+
+    public void setSevenToEight(Boolean sevenToEight) {
+        this.sevenToEight = sevenToEight;
+    }
+
+    public Integer getTotal() {
+        return total;
+    }
+
+    public void setTotal(Integer total) {
+        this.total = total;
+    }
+
+    public Integer getNumber() {
+        return number;
+    }
+
+    public void setNumber(Integer number) {
+        this.number = number;
+    }
+
+    public String getSurface() {
+        return surface;
+    }
+
+    public void setSurface(String surface) {
+        this.surface = surface;
+    }
+
+    @Column(nullable = false)
+    public String getEnvironment() {
+        return environment;
+    }
+
+    public void setEnvironment(String environment) {
+        this.environment = environment;
+    }
+
+    public String getHours() {
+        return hours;
+    }
+
+    public void setHours(String hours) {
+        this.hours = hours;
+    }
+
+    public String getAvailability() {
+        return availability;
+    }
+
+    public void setAvailability(String availability) {
+        this.availability = availability;
+    }
+}
