@@ -1,0 +1,78 @@
+// Waiting for the DOM content to be loaded
+document.addEventListener("DOMContentLoaded", function () {
+  // Getting the search button element by its id
+  const searchButton = document.getElementById("searchButton");
+
+  // Adding an event listener for the search button click
+  searchButton.addEventListener("click", function (event) {
+    event.preventDefault();
+    // Calling the function to perform the tennis club search
+    performSearch();
+  });
+});
+
+// Function to perform the tennis club search
+async function performSearch() {
+  // Retrieving the dropdown elements for surface, hours, environment, and availability
+  const surfaceDropdown = document.getElementById("Surface");
+  const hoursDropdown = document.getElementById("Hours");
+  const environmentDropdown = document.getElementById("Environment");
+  const availabilityDropdown = document.getElementById("Availability");
+
+  // Retrieving the selected values from the drop down lists
+  const surface = surfaceDropdown.value;
+  const hours = hoursDropdown.value;
+  const environment = environmentDropdown.value;
+  const availability = availabilityDropdown.value;
+
+  // Checking if all the search boxes are selected
+  if (surface && hours && environment && availability) {
+    try {
+      let data;
+      // Retrieving the data based on the surface selected
+      if (surface === "Hard") {
+        data = await fetchParadiseTennisClubData(
+          surface,
+          hours,
+          environment,
+          availability
+        );
+        // Displaying the data for the Paradise Tennis Club
+        displayParadiseTennisClubData(data);
+      } else if (surface === "Clay") {
+        data = await fetchLakewoodTennisClubData(
+          surface,
+          hours,
+          environment,
+          availability
+        );
+        // Displaying the data for the Lakewood Tennis Club
+        displayLakewoodTennisClubData(data);
+      } else if (surface === "Grass") {
+        data = await fetchRoyalTennisClubData(
+          surface,
+          hours,
+          environment,
+          availability
+        );
+        // Displaying the data for the Royal Tennis Club
+        displayRoyalTennisClubData(data);
+      } else if (surface === "Padel") {
+        data = await fetchPadelPlusClubData(
+          surface,
+          hours,
+          environment,
+          availability
+        );
+        // Displaying the data for the Padel Plus Club
+        displayPadelPlusClubData(data);
+      }
+    } catch (error) {
+      // Logging error message if fetching the data fails
+      console.error("There was a problem fetching the data:", error.message);
+    }
+  } else {
+    // Display a message to the users if they havent selected all the search boxes
+    alert("Please select all boxes to continue your search");
+  }
+}
