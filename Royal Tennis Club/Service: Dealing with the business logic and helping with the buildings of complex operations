@@ -1,0 +1,82 @@
+// Defining the package and all imports for the Lakewood Tennis Club Service
+package com.example.myapp.services;
+
+//Importing all the necessary classes and packages 
+import com.example.myapp.model.RoyalTennisClub;
+import com.example.myapp.repositories.RoyalTennisClubRepository;
+import org.springframework.stereotype.Service;
+import java.util.List;
+
+// Defining a service for dealing with the business logic which are related to the Royal Tennis Club entities
+@Service
+public class RoyalTennisClubService {
+    // Defining a private field for the Royal Tennis Club Repository
+    private final RoyalTennisClubRepository royalTennisClubRepository;
+
+    // Creating a constructor for the Royal Tennis Club Repository
+    public RoyalTennisClubService(RoyalTennisClubRepository royalTennisClubRepository) {
+        this.royalTennisClubRepository = royalTennisClubRepository;
+    }
+
+    // Methods to fetch Royal Tennis Club data by various entities
+    public List<RoyalTennisClub> fetchTennisClubDataBySurface(String surface) {
+        return royalTennisClubRepository.findBySurface(surface);
+    }
+
+    public List<RoyalTennisClub> fetchTennisClubDataBySurfaceAndEnvironment(String surface, String environment) {
+        return royalTennisClubRepository.findBySurfaceAndEnvironment(surface, environment);
+    }
+
+    public List<RoyalTennisClub> fetchTennisClubDataBySurfaceAndHours(String surface, String hours) {
+        return royalTennisClubRepository.findBySurfaceAndHours(surface, hours);
+    }
+
+    public List<RoyalTennisClub> fetchTennisClubDataBySurfaceAndHoursAndEnvironment(String surface, String hours,
+            String environment) {
+        return royalTennisClubRepository.findBySurfaceAndHoursAndEnvironment(surface, hours, environment);
+    }
+
+    public List<RoyalTennisClub> fetchTennisClubDataBySurfaceAndHoursAndEnvironmentAndAvailability(
+            String surface, String hours, String environment, String availability) {
+        return royalTennisClubRepository.findBySurfaceAndHoursAndEnvironmentAndAvailability(surface, hours,
+                environment, availability);
+    }
+
+    // Method for automatically updating a specific time slot field for royal
+    // tennis club
+    public void updateField(Integer id, String fieldName, Boolean value) {
+        RoyalTennisClub rtc = royalTennisClubRepository.findById(id).orElseThrow(IllegalArgumentException::new);
+
+        switch (fieldName) {
+            case "12to1":
+                rtc.setTwelveToOne(value);
+                break;
+            case "1to2":
+                rtc.setOneToTwo(value);
+                break;
+            case "2to3":
+                rtc.setTwoToThree(value);
+                break;
+            case "3to4":
+                rtc.setThreeToFour(value);
+                break;
+            case "4to5":
+                rtc.setFourToFive(value);
+                break;
+            case "5to6":
+                rtc.setFiveToSix(value);
+                break;
+            case "6to7":
+                rtc.setSixToSeven(value);
+                break;
+            case "7to8":
+                rtc.setSevenToEight(value);
+                break;
+            default:
+                throw new IllegalArgumentException("Invalid Field name");
+        }
+
+        royalTennisClubRepository.save(rtc);
+    }
+
+}
