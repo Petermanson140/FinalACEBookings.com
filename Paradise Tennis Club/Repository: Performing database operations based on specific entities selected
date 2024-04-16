@@ -1,0 +1,28 @@
+// Defining the package and all imports for the Paradise Tennis Club Repository
+package com.example.myapp.repositories;
+
+// Importing all the necessary classes and packages 
+import com.example.myapp.model.ParadiseTennisClub;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+import java.util.List;
+
+// Defining a repository for Paradise Tennis Club entities in the model file
+@Repository
+// Extending the JpaRepository, specifying the exact entity type which is
+// Paradise Tennis Club and the primary key type which is an Integer
+public interface ParadiseTennisClubRepository extends JpaRepository<ParadiseTennisClub, Integer> {
+    // Defining the query methods to find the Paradise Tennis Club entities by
+    // different criteria shown below
+    List<ParadiseTennisClub> findBySurface(String surface);
+
+    List<ParadiseTennisClub> findBySurfaceAndHours(String surface, String hours);
+
+    List<ParadiseTennisClub> findBySurfaceAndEnvironment(String surface, String environment);
+
+    List<ParadiseTennisClub> findBySurfaceAndHoursAndEnvironment(String surface, String hours, String environment);
+
+    List<ParadiseTennisClub> findBySurfaceAndHoursAndEnvironmentAndAvailability(String surface, String hours,
+            String environment, String availability);
+
+}
