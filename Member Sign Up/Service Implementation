@@ -1,0 +1,27 @@
+// Defining the package and all imports for the Member Implementation 
+package com.example.myapp.service.Impl;
+
+//Importing all the necessary classes and packages 
+import com.example.myapp.model.Member;
+import com.example.myapp.repositories.MemberRepository;
+import com.example.myapp.services.MemberService;
+import javax.transaction.Transactional;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+// Implementation of the Member Service interface
+@Service
+public class MemberServiceImpl implements MemberService {
+    // Autowiring the Member Repository
+    @Autowired
+    MemberRepository memberRepository;
+
+    // Method to signing up a new member with @Transactional annotation for managing
+    // the transaction
+    @Override
+    @Transactional
+    public Member signUp(Member member) {
+        // Saving the new member using the Member Repository
+        return memberRepository.save(member);
+    }
+}
