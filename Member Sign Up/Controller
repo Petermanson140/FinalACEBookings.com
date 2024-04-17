@@ -1,0 +1,33 @@
+// Defining the package and all imports for the Lakewood Tennis Club Controller 
+package com.example.myapp.controller;
+
+//Importing all the necessary classes and packages 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+import com.example.myapp.model.Member;
+import com.example.myapp.services.MemberService;
+
+// Defining the rest controller for handling all of the related member requests
+@RestController
+@RequestMapping("/api")
+// Allowing cross-origin requests from all origins
+@CrossOrigin(origins = "*")
+public class MemberController {
+    // Autowiring the Member service
+    @Autowired
+    MemberService memberService;
+
+    // Mapping HTTP POST requests to the "/members" api end point in the database
+    @PostMapping("/members")
+    // Method for saving a new member by taking the Member object in the request
+    // body
+    public Member saveMember(@RequestBody Member member) {
+        // Calling the signUp method of the MemberService to sign up the new member
+        return memberService.signUp(member);
+    }
+
+}
