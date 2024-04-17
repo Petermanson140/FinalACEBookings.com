@@ -1,0 +1,13 @@
+// Defining the package and all imports for the Member Service
+package com.example.myapp.services;
+
+//Importing all the necessary classes and packages 
+import org.springframework.stereotype.Service;
+import com.example.myapp.model.Member;
+
+// Service interface for operations which are member related
+@Service
+public interface MemberService {
+    // Method used for signing up a new member
+    public Member signUp(Member member);
+}
