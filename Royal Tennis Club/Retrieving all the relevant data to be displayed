@@ -1,0 +1,146 @@
+async function fetchRoyalTennisClubData(
+  surface,
+  hours,
+  environment,
+  availability
+) {
+  const url = `http://localhost:8080/api/royaltennisclub?surface=${surface}&hours=${hours}&environment=${environment}&availability=${availability}`;
+  const response = await fetch(url);
+
+  if (!response.ok) {
+    throw new Error("Failed to fetch the data from the database server.");
+  }
+
+  return response.json();
+}
+
+function displayRoyalTennisClubData(data) {
+  const dataContainer = document.getElementById("DataContainer");
+  dataContainer.innerHTML = "";
+  dataContainer.style.backgroundColor = "white";
+
+  if (Array.isArray(data) && data.length > 0) {
+    data.forEach((club) => {
+      dataContainer.innerHTML += `
+            <p><strong>Club Name:</strong> ${club.name}</p>
+            <p><strong>Location:</strong> ${club.location}</p>
+            <p><strong>Court Number:</strong> ${club.number}</p>
+            <p><strong>BookingCourt Id:</strong> ${club.id}</p>
+            <p><strong>Surface:</strong> ${club.surface}</p>
+            <p><strong>Indoors/Outdoors:</strong> ${club.environment}</p>
+            <p><strong>Available Time Slots: Please click on an available 1 hour time slot below to book the court</strong></p>
+            <div class="time-slot-items">
+            <button 
+      class="time-slot-button ${
+        club["twelveToOne"] == 1 ? "booked" : "available"
+      }" 
+      data-club-name="royaltennisclub"
+      data-id="1" 
+      data-time-slot="twelveToOne"
+      onclick="bookRoyalCourt(${club.id},'12to1','1')"
+      ${club["twelveToOne"] == 1 ? "disabled" : ""}
+  >
+      12to1 ${club["twelveToOne"] == 0 ? "(Available)" : "(Booked)"}
+  </button>
+  
+  <button 
+      class="time-slot-button ${
+        club["oneToTwo"] == 1 ? "booked" : "available"
+      }" 
+      data-club-name="royaltennisclub"
+      data-id="2" 
+      data-time-slot="oneToTwo"
+      onclick="bookRoyalCourt(${club.id},'1to2','1')"
+      ${club["oneToTwo"] == 1 ? "disabled" : ""}
+  >
+      1to2 ${club["oneToTwo"] == 0 ? "(Available)" : "(Booked)"}
+  </button>
+  
+  <button 
+      class="time-slot-button ${
+        club["twoToThree"] == 1 ? "booked" : "available"
+      }" 
+      data-club-name="royaltennisclub"
+      data-id="3" 
+      data-time-slot="twoToThree"
+      onclick="bookRoyalCourt(${club.id},'2to3','1')"
+      ${club["twoToThree"] == 1 ? "disabled" : ""}
+  >
+      2to3 ${club["twoToThree"] == 0 ? "(Available)" : "(Booked)"}
+  </button>
+  
+  <button 
+      class="time-slot-button ${
+        club["threeToFour"] == 1 ? "booked" : "available"
+      }" 
+      data-club-name="royaltennisclub"
+      data-id="4" 
+      data-time-slot="threeToFour"
+      onclick="bookRoyalCourt(${club.id},'3to4','1')"
+      ${club["threeToFour"] == 1 ? "disabled" : ""}
+  >
+      3to4 ${club["threeToFour"] == 0 ? "(Available)" : "(Booked)"}
+  </button>
+  
+  <button 
+      class="time-slot-button ${
+        club["fourToFive"] == 1 ? "booked" : "available"
+      }" 
+      data-club-name="royaltennisclub"
+      data-id="5" 
+      data-time-slot="fourToFive"
+      onclick="bookRoyalCourt(${club.id},'4to5','1')"
+      ${club["fourToFive"] == 1 ? "disabled" : ""}
+  >
+      4to5 ${club["fourToFive"] == 0 ? "(Available)" : "(Booked)"}
+  </button>
+  
+  <button 
+      class="time-slot-button ${
+        club["fiveToSix"] == 1 ? "booked" : "available"
+      }" 
+      data-club-name="royaltennisclub"
+      data-id="6" 
+      data-time-slot="fiveToSix"
+      onclick="bookRoyalCourt(${club.id},'5to6','1')"
+      ${club["fiveToSix"] == 1 ? "disabled" : ""}
+  >
+      5to6 ${club["fiveToSix"] == 0 ? "(Available)" : "(Booked)"}
+  </button>
+  
+  <button 
+      class="time-slot-button ${
+        club["sixToSeven"] == 1 ? "booked" : "available"
+      }" 
+      data-club-name="royaltennisclub"
+      data-id="7" 
+      data-time-slot="sixToSeven"
+      onclick="bookRoyalCourt(${club.id},'6to7','1')"
+      ${club["sixToSeven"] == 1 ? "disabled" : ""}
+  >
+      6to7 ${club["sixToSeven"] == 0 ? "(Available)" : "(Booked)"}
+  </button>
+  
+  <button 
+      class="time-slot-button ${
+        club["sevenToEight"] == 1 ? "booked" : "available"
+      }" 
+      data-club-name="royaltennisclub"
+      data-id="8" 
+      data-time-slot="sevenToEight"
+      onclick="bookRoyalCourt(${club.id},'7to8','1')"
+      ${club["sevenToEight"] == 1 ? "disabled" : ""}
+  >
+      7to8 ${club["sevenToEight"] == 0 ? "(Available)" : "(Booked)"}
+  </button>
+  <p><strong>If you want to cancel your booking, please do the followings:</strong></p>
+  <p><strong>1) Type in your Booking Court ID number into the search box above</strong></p>
+  <p><strong>2) Choose the 1 hour time slot from the time slot dropdown list above</strong></p>
+  <p><strong>3) Click on the Remove Booking button above</strong></p>
+            </div>
+            <hr>`;
+    });
+  } else {
+    dataContainer.innerHTML += `<p><strong>No courts are available</strong></p>`;
+  }
+}
