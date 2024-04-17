@@ -1,0 +1,111 @@
+// Waiting for the document content to load fully before executing the scripts
+document.addEventListener("DOMContentLoaded", function () {
+  // Getting the confirm button and form elements by their id's
+  const confirmButton = document.getElementById("confirmButton");
+  const form = document.getElementById("form");
+  // Adding an event listener to the confirm button 
+  confirmButton.addEventListener("click", function (event) {
+    event.preventDefault(); // Preventing the default behaviour of the button click
+   // Getting the input values for the sign in form by their id's and removing any whitespace that may appear
+    const firstname = document.getElementById("Firstname").value.trim();
+    const lastname = document.getElementById("Lastname").value.trim();
+    const username = document.getElementById("Username").value.trim();
+    const email = document.getElementById("Email").value.trim();
+    const password = document.getElementById("Password").value.trim();
+    const confirmPassword = document
+      .getElementById("confirmPassword")
+      .value.trim();
+
+    // Checking if any of the boxes in the sign up form are empty
+    if (
+      firstname === "" ||
+      lastname === "" ||
+      username === "" ||
+      email === "" ||
+      password === "" ||
+      confirmPassword === ""
+    ) {
+      //displaying a message to the users telling them to fill in all the boxes if they have left any unfilled
+      alert("Please fill in all the boxes. Thank you");
+      return;
+    }
+
+    // Validating the first name format
+    if (!isValidName(firstname)) {
+      alert("Please enter a first name starting with a capital letter");
+      return;
+    }
+
+    // Validating the last name format
+    if (!isValidName(lastname)) {
+      alert("Please enter a last name starting with a capital letter");
+      return;
+    }
+
+    // Validating the email format
+    if (!isValidEmail(email)) {
+      alert("Please enter an email address with an @");
+      return;
+    }
+
+    // Validating the username format
+    if (!isValidUsername(username)) {
+      alert(
+        " The username must be at least 8 characters long, contain at least one uppercase letter, one lowercase letter, one number and one special character"
+      );
+      return;
+    }
+
+    // Validating the password strength
+    if (!isValidPassword(password)) {
+      alert(
+        "The password must be at least 8 characters long, have at least one capital letter, one non-capital letter, one number and one special character"
+      );
+      return;
+    }
+
+    // Validating the password and that the confirm password matches
+    if (password !== confirmPassword) {
+      alert(" Both passwords do not match unfortunately. Please try again");
+      // Clear password and confirm password fields
+      document.getElementById("Password").value = "";
+      document.getElementById("confirmPassword").value = "";
+      return;
+    }
+
+    // Displaying a successful message to the user for a successful sign up
+    alert("Thank you for signing up and becoming a member!");
+
+    // Clearing the sign up form boxes after signing up successfully
+    form.reset();
+  });
+});
+
+// Function for validating the first name and last name format
+function isValidName(name) {
+  // Name must start with a capital letter containing on letters
+  const nameRegex = /^[A-Z][a-z]*$/;
+  return nameRegex.test(name);
+}
+
+// Function for validating the email format
+function isValidEmail(email) {
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return emailRegex.test(email);
+}
+
+// Function for validating the username format
+function isValidUsername(username) {
+  // Username must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, one number, and one special character
+  const usernameRegex =
+    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+  return usernameRegex.test(username);
+}
+
+// Function for validating the password format
+function isValidPassword(password) {
+  // Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, one number, and one special character
+  const passwordRegex =
+    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+  return passwordRegex.test(password);
+}
