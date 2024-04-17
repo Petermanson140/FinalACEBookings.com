@@ -1,0 +1,24 @@
+//Beginning function for removing a booking button for all time slots for all tennis clubs
+document.addEventListener("DOMContentLoaded", function () {
+  const removeBookingButton = document.getElementById("removeBookingButton");
+
+  removeBookingButton.addEventListener("click", function (event) {
+    event.preventDefault();
+    performBookingRemoval();
+  });
+});
+
+async function performBookingRemoval() {
+  const timeSlot = document.getElementById("timeSlotId");
+  const timeSlotString = timeSlot.value;
+  const bookingCourtId = document.getElementById("bookingCourtId");
+  console.log(
+    "Time slot " + timeSlotString + " bookingcourtid " + bookingCourtId.value
+  );
+  bookLakewoodCourt(bookingCourtId.value, timeSlotString, 0);
+  bookParadiseCourt(bookingCourtId.value, timeSlotString, 0);
+  bookRoyalCourt(bookingCourtId.value, timeSlotString, 0);
+  bookPadelCourt(bookingCourtId.value, timeSlotString, 0);
+}
+
+//End of removing booking function for all times slots for all tennis clubs
