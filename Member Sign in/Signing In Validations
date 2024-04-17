@@ -1,0 +1,73 @@
+//waiting for the DOM to fully load before executing the below
+document.addEventListener("DOMContentLoaded", function () {
+  ////Getting the sign in button element by it's ID and also the form container through the query selector
+  const showSigninButton = document.getElementById("showSigninButton");
+  const signinFormContainer = document.querySelector(".signin-form");
+
+  showSigninButton.addEventListener("click", function () {
+    //Displaying the sign in form after the sign in button has been clicked
+    signinFormContainer.style.display = "block";
+  });
+  //Getting the sign in element by it's ID
+  const signinForm = document.getElementById("signin");
+  signinForm.addEventListener("submit", function (event) {
+    event.preventDefault();
+    //Getting the sign in Email and sign in Password elements by thier ID and removing any whitespace that may appear
+    const email = document.getElementById("signinEmail").value.trim();
+    const password = document.getElementById("signinPassword").value.trim();
+    const confirmPassword = document
+      .getElementById("signinConfirmPassword")
+      .value.trim();
+
+    // Checking if any of the boxes to be filled in are blank
+    if (email === "" || password === "" || confirmPassword === "") {
+      alert("Please fill in all the boxes. Thank you");
+      return;
+    }
+
+    // Validating the email format
+    if (!isValidEmail(email)) {
+      alert("Please enter an email address with an @");
+      return;
+    }
+
+    // Validating the password strength
+    if (!isValidPassword(password)) {
+      alert(
+        "The password must be at least 8 characters long, have at least one capital letter, one non-capital letter, one number and one special character"
+      );
+      return;
+    }
+
+    // Validating the password and that the confirm password matches
+    if (password !== confirmPassword) {
+      alert("Passwords do not match. Please try again");
+      // Clear password and confirm password fields
+      document.getElementById("signinPassword").value = "";
+      document.getElementById("signinConfirmPassword").value = "";
+      return;
+    }
+
+    // Displaying a success message to the user that they signed in
+    alert("Congratulations, you have signed in successfully!");
+
+    // Clearing the sign in form after a successfull sign in
+    signinForm.reset();
+
+    // Hiding the sign-in form after a successful sign in
+    signinFormContainer.style.display = "none";
+  });
+});
+
+// Validation functions for signing in
+function isValidEmail(email) {
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return emailRegex.test(email);
+}
+
+function isValidPassword(password) {
+  // Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, one number, and one special character
+  const passwordRegex =
+    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+  return passwordRegex.test(password);
+}
