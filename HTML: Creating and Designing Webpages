@@ -1,0 +1,172 @@
+<body>
+    <header class="header">
+      <h1 class="company-name">ACEBookings.com</h1>
+      <div class="navigation">
+        <a href="#" class="navigation-buttons">About Us</a>
+        <a href="#" class="navigation-buttons">Careers</a>
+        <a href="#" class="navigation-buttons">Memberships and Sign up</a>
+        <a href="#" class="navigation-buttons">Customer Service</a>
+        <a href="#" class="navigation-buttons">FAQ's</a>
+       <a href="#" class="navigation-buttons" id="showSigninButton" >Sign in</a>
+       <div class="signin-form" style="display: none;">
+        <form id="signin" method="post">
+            <label for="signinEmail">Email:</label>
+            <input type="email" id="signinEmail" name="email" required>
+            <label for="signinPassword">Password:</label>
+            <input type="password" id="signinPassword" name="password" required>
+            <label for="signinConfirmPassword">Confirm Password:</label>
+            <input type="password" id="signinConfirmPassword" name="confirmPassword" required>
+            <button type="submit" id="signinButton">Click to Sign in</button>
+        </form>
+      </div>
+    </div>
+        </div>
+    </header>
+    <header class="promotion-banner">
+      <h2 class="promotion">
+        All NEW members get 50% off Annual Membership Fee (USE CODE: NEW50)
+      </h2>
+    </header>
+    <div class="image-container">
+      <img id="defaultImage" src="Images/default.png" alt="default" />
+      <img id="clayImage" src ="Images/claycourt.png" alt ="clay" style="display: none;"/>
+      <img id="hardImage" src ="Images/hardcourt.png" alt ="hard" style="display: none;"/>
+      <img id="grassImage" src ="Images/grass.png" alt ="grass" style="display: none;"/>
+      <img id="padelImage" src ="Images/padeltennis.jpg" alt ="padel" style="display: none;"/>
+      <div class="image-text">
+        Pick your Arena.
+      </div>
+    </div>
+  </header>
+  <header class="search-box">
+    <div class="search-section 1">
+      <h3 class="search-box-header">Surface Type</h3>
+      <select id="Surface">
+        <option/option>
+        <option value="Clay">Clay</option>
+        <option value="Hard">Hard</option>
+        <option value="Grass">Grass</option>
+        <option value="Padel">Padel</option>
+      </select>
+    </div>
+    </div>
+    <div class="search-section 3">
+      <h3 class="search-box-header"> Choose a Date</h3>
+      <select id="Availability">
+        <option/option>
+        <option value="2024-07-01">July 1, 2024</option>
+        <option value="2024-07-02">July 2, 2024</option>
+        <option value="2024-07-03">July 3, 2024</option>
+        <option value="2024-07-04">July 4, 2024</option>
+      </select>
+    </div>
+    
+    <div class="search-section 4">
+      <h3 class="search-box-header">Indoors/Outdoors</h3>
+      <select id="Environment">
+        <option/option>
+        <option value="Indoors">Indoors</option>
+        <option value="Outdoors">Outdoors</option>
+      </select>
+    </div>
+    <div class="search-section 5">
+      <h3 class="search-box-header">Hours</h3>
+      <select id="Hours">
+        <option/option>
+        <option value="1 Hour">1 Hour</option>
+      </select>
+        <a href="#" class="search-button"  id= "searchButton" >Search</a> 
+      </div>
+      <div class="search-section 5">
+        <h3 class="search-box-header">BookingCourt Id</h3>
+        <input type="text" id="bookingCourtId" />
+      </div> 
+      <div class="search-section 5" >
+        <h3 class="search-box-header">Time Slot</h3>
+        <select id="timeSlotId">
+          <option value="12to1">12to1</option>
+          <option value="1to2">1to2</option>
+          <option value="2to3">2to3</option>
+          <option value="3to4">3to4</option>
+          <option value="4to5">4to5</option>
+          <option value="5to6">5to6</option>
+          <option value="6to7">6to7</option>
+          <option value="7to8">7to8</option>
+        </select>
+      </div> 
+      <a href="#" class="search-button"  id= "removeBookingButton" >Remove Booking</a> 
+      <div id="DataContainer"></div>
+  <header class="about-us-header" id="aboutUs">
+    <h3 class="about-us-title">About Us <a href="#" class="back-to-top-button">Back to the Top</a></h3>
+    <div class="about-us-content">
+    <h4>Welcome to ACEBookings.com . The number one go-to destination for hassle-free tennis court bookings in London! 
+      Our goal is to make your tennis booking experience as simple and enjoyable as possible, so you can focus on having fun on the court</h4>
+    <h4>With ACEBookings.com, finding and booking the perfect tennis court for you and your friends is as quick as serving an ace!</h4>
+    <h4>Forget the fustration and stress of searching multiple websites. Everything you need is right here, all on one site!</h4>
+    <h4>Whether you're a regular player or a beginner, ACEBookings.com is for everyone. From choosing your favourite court surface to the perfect playing environment, we have got you covered!</h4>
+    <h4> ACEBookings.com isn't just for the players. We also help and support public tennis clubs to increase their exposure. This helps them fill up their courts quicker whilst creating a bigger and stronger tennis community</h4>
+      <header class="careers-header" id="careers">
+      <h3 class="careers-title">Careers <a href="#" class="back-to-top-button-2">Back to the Top</a></h3>
+      <div class="careers-content">
+        <h4>Join our team at ACEBookings.com!</h4>   
+        <h4>Do you love helping others, working with others and reaching your full potential? If the answer is YES, then come join us!</h4>   
+        <h5>Backend Developer</h5>
+        <h4>Do you have experience in building systems? If so, join us to make ACEBookings.com work as smoothly and reliable for everyone as possible!</h4>
+        <h5>UI/UX Designer</h5>
+        <h4>Do you love making interfaces look user-friendly and simple to use? If yes, join us in improving how the website looks for the users to improve their experience whilst making it easy for them to understand from start to finish!</h4>
+        <h5>Marketing and Advertising Ambassador</h5>
+        <h4>Do you love social media and use it regularly? If the answer is yes, join the team to create content and exposure about ACEBookings.com to get more people to subscribe!</h4>
+        <h5>Customer Service Representative</h5>
+        <h4>Do you enjoy helping people and making their day? Join us if you do to help new and exisiting customers using ACEBookings.com have a seamless experience!</h4>
+        <h4>If you fancy being part of our vibrant and hard-working team helping in changing the future of tennis bookings, we need to hear from you! Email careers@acebookings.com with your CV and Cover Letter and let's make ACEBookings.com better together!</h4>
+  <header class="memberships-header" id="memberships">
+    <h3 class="memberships-title">Memberships <a href="#" class="back-to-top-button-3">Back to the Top</a></h3>
+    <div class="memberships-content">
+    <h4> Subscribe to ACEBookings.com and as a member, you will unlock exclusive benefits and perks all year round! </h4>
+    <h4> Sign up below NOW and take your tennis to the next level!  </h4>  
+          <div class="signup-form">
+            <form id="form" form action="/api/members" method="post">
+                <label for="Firstname">First name:</label>
+                <input type="text" id="Firstname" name="firstname" required>
+                <label for="Lastname">Last name:</label>
+                <input type="text" id="Lastname" name="lastname" required>
+                <label for="Username">Username:</label>
+                <input type="text" id="Username" name="username" required>
+                <label for="email">Email:</label>
+                <input type="email" id="Email" name="email" required>
+                <label for="password">Password:</label>
+                <input type="password" id="Password" name="password" required>
+                <label for="confirmPassword">Confirm Password:</label>
+                <input type="password" id="confirmPassword" name="confirmPassword" required>
+                <button type="submit" id="confirmButton">Click to Confirm Details and Sign Up</button>
+            </form>
+          </div>
+        </header>   
+      <header class="customer-service-header" id="customerservice">
+      <h3 class="customer-service-title">Customer Service <a href="#" class="back-to-top-button-4">Back to the Top</a></h3>
+      <div class="customer-service-content">
+      <h4>At ACEBookings.com, our top priority is to make sure that you have the best experience possible. Our experienced and dedicated customer service team is available to help you from 9am-6pm with any questions or problems that you may have!</h4>
+      <h4>If you need help finding the perfect tennis court for yourself, friends and family, have any general questions to ask or just want to provide feedback about the site, we are here to help you every step of the way!</h4>
+      <h4>Your experience on our site is our number one priority and we are 100% committed to providing exceptional service at all times!</h4>
+      <h4>Please don't hesistate to contact XXXXXXXXXXX or email acebookings@customerservice.com and let us help make your tennis booking journey as straightforward as possible!</h4>
+      </div>
+        </header>   
+      <header class="FAQS-header" id="FAQS">
+      <h3 class="FAQS-title">Frequently Asked Questions <a href="#" class="back-to-top-button-5">Back to the Top</a></h3>
+      <div class="FAQS-content">
+      <h6>How do I sign up for ACEBookings.com?</h6>
+      <h4>Signing up is very simple and quick. Go to the memberships and sign up area and fill in the form and click the confirm button afterwards and you will become a member just like that!</h4>
+      <h6>Is ACEBookings.com available in other cities apart from London?</h6>
+      <h4>At the moment, it is only available in London but we are hoping to expand to other cities in the UK in the near future. Keep an eye out!</h4>
+      <h6>Can I book tennis courts as a non-member?</h6>
+      <h4>Yes, you can still book tennis courts even if you are not a member but a booking fee of £1 will be added to the final price</h4>
+      <h6>Are there any cancellation fees for bookings?</h6>
+      <h4>If you cancel the day before, you will not be charged a cancellation fee but if you cancel on the day, a £1 cancellation fee will be charged</h4>
+      <h6>Can I change or reschedule my booking?</h6>
+      <h4>Yes, you can change or reschedule your bookings at anytime</h4>
+      <h6>Is there a minimum or maximum booking duration?</h6>
+      <h4>There is no maximum number of hours and tennis courts you can book but the minimum number of hours is 1 hour</h4>
+      <h6>How do I contact customer services if I encounter issues with my booking?</h6>
+      <h4>To contact customer services regarding any problems you may have, please go to the Customer Service section and all the details will be there </h4>
+      <h6>Are there any discounts or promotions available for members?</h6>
+      <h4>Yes, there are discounts and promotions all year round for members, so keep an eye out on the website and your emails</h4>
