@@ -1,0 +1,18 @@
+ <script src="Buttons/Aboutussection.js"></script>
+  <script src="Buttons/Careerssection.js"></script>
+  <script src="Buttons/Membershipssection.js"></script>
+  <script src="Buttons/Customerservicesection.js"></script>
+  <script src="Buttons/FAQSsection.js"></script>
+  <script src="Functions/Signup.js"></script>
+  <script src="Functions/Signin.js"></script>
+  <script src="Functions/TennisClubSearch.js"></script>
+  <script src="Functions/TennisSurfaceImages.js"></script>
+  <script src="Functions/LakewoodTennisClub.js"></script>
+  <script src="Functions/ParadiseTennisClub.js"></script>
+  <script src="Functions/RoyalTennisClub.js"></script>
+  <script src="Functions/PadelPlusClub.js"></script>
+  <script src="Functions/RemoveBookings.js"></script>
+  <script id="paradise-bookings-script" src="Functions/ParadiseBookings.js"></script>
+  <script id="lakewood-bookings-script" src="Functions/LakewoodBookings.js"></script>
+  <script id="royal-bookings-script" src="Functions/RoyalBookings.js"></script>
+  <script id="padel-bookings-script" src="Functions/PadelBookings.js"></script>
