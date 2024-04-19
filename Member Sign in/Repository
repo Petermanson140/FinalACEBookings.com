@@ -1,0 +1,16 @@
+// Defining the package and all imports for Member
+package com.example.myapp.repositories;
+
+//Importing all the necessary classes and packages 
+import com.example.myapp.model.Member;
+
+import java.util.List;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+// Extending the JpaRepository, specifying the exact entity type which is
+// Member and the primary key type which is an Integer
+public interface MemberRepository extends JpaRepository<Member, Long> {
+
+    List<Member> findByEmail(String email);
+}
