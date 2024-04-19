@@ -1,4 +1,4 @@
-// Defining the package and all imports for the Lakewood Tennis Club Controller 
+// Defining the package and all imports for the Member Controller 
 package com.example.myapp.controller;
 
 //Importing all the necessary classes and packages 
