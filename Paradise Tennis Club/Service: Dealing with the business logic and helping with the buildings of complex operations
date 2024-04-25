@@ -18,24 +18,8 @@ public class ParadiseTennisClubService {
         this.paradiseTennisClubRepository = paradiseTennisClubRepository;
     }
 
-    // Methods to fetch Paradise Tennis Club data by various entities
-    public List<ParadiseTennisClub> fetchTennisClubDataBySurface(String surface) {
-        return paradiseTennisClubRepository.findBySurface(surface);
-    }
-
-    public List<ParadiseTennisClub> fetchTennisClubDataBySurfaceAndEnvironment(String surface, String environment) {
-        return paradiseTennisClubRepository.findBySurfaceAndEnvironment(surface, environment);
-    }
-
-    public List<ParadiseTennisClub> fetchTennisClubDataBySurfaceAndHours(String surface, String hours) {
-        return paradiseTennisClubRepository.findBySurfaceAndHours(surface, hours);
-    }
-
-    public List<ParadiseTennisClub> fetchTennisClubDataBySurfaceAndHoursAndEnvironment(String surface, String hours,
-            String environment) {
-        return paradiseTennisClubRepository.findBySurfaceAndHoursAndEnvironment(surface, hours, environment);
-    }
-
+    // Method to fetch Paradise Tennis Club data by various entities
+   
     public List<ParadiseTennisClub> fetchTennisClubDataBySurfaceAndHoursAndEnvironmentAndAvailability(
             String surface, String hours, String environment, String availability) {
         return paradiseTennisClubRepository.findBySurfaceAndHoursAndEnvironmentAndAvailability(surface, hours,
