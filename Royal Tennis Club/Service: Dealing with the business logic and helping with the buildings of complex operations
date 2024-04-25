@@ -18,24 +18,8 @@ public class RoyalTennisClubService {
         this.royalTennisClubRepository = royalTennisClubRepository;
     }
 
-    // Methods to fetch Royal Tennis Club data by various entities
-    public List<RoyalTennisClub> fetchTennisClubDataBySurface(String surface) {
-        return royalTennisClubRepository.findBySurface(surface);
-    }
-
-    public List<RoyalTennisClub> fetchTennisClubDataBySurfaceAndEnvironment(String surface, String environment) {
-        return royalTennisClubRepository.findBySurfaceAndEnvironment(surface, environment);
-    }
-
-    public List<RoyalTennisClub> fetchTennisClubDataBySurfaceAndHours(String surface, String hours) {
-        return royalTennisClubRepository.findBySurfaceAndHours(surface, hours);
-    }
-
-    public List<RoyalTennisClub> fetchTennisClubDataBySurfaceAndHoursAndEnvironment(String surface, String hours,
-            String environment) {
-        return royalTennisClubRepository.findBySurfaceAndHoursAndEnvironment(surface, hours, environment);
-    }
-
+    // Method to fetch Royal Tennis Club data by various entities
+  
     public List<RoyalTennisClub> fetchTennisClubDataBySurfaceAndHoursAndEnvironmentAndAvailability(
             String surface, String hours, String environment, String availability) {
         return royalTennisClubRepository.findBySurfaceAndHoursAndEnvironmentAndAvailability(surface, hours,
