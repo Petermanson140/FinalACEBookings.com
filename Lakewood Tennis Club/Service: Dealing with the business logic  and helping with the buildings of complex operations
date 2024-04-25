@@ -18,24 +18,8 @@ public class LakewoodTennisClubService {
         this.lakewoodTennisClubRepository = lakewoodTennisClubRepository;
     }
 
-    // Methods to fetch Lakewood Tennis Club data by various entities
-    public List<LakewoodTennisClub> fetchTennisClubDataBySurface(String surface) {
-        return lakewoodTennisClubRepository.findBySurface(surface);
-    }
-
-    public List<LakewoodTennisClub> fetchTennisClubDataBySurfaceAndEnvironment(String surface, String environment) {
-        return lakewoodTennisClubRepository.findBySurfaceAndEnvironment(surface, environment);
-    }
-
-    public List<LakewoodTennisClub> fetchTennisClubDataBySurfaceAndHours(String surface, String hours) {
-        return lakewoodTennisClubRepository.findBySurfaceAndHours(surface, hours);
-    }
-
-    public List<LakewoodTennisClub> fetchTennisClubDataBySurfaceAndHoursAndEnvironment(String surface, String hours,
-            String environment) {
-        return lakewoodTennisClubRepository.findBySurfaceAndHoursAndEnvironment(surface, hours, environment);
-    }
-
+    // Method to fetch Lakewood Tennis Club data by various entities
+   
     public List<LakewoodTennisClub> fetchTennisClubDataBySurfaceAndHoursAndEnvironmentAndAvailability(
             String surface, String hours, String environment, String availability) {
         return lakewoodTennisClubRepository.findBySurfaceAndHoursAndEnvironmentAndAvailability(surface, hours,
