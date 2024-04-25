@@ -12,15 +12,8 @@ import java.util.List;
 // Extending the JpaRepository, specifying the exact entity type which is
 // Paradise Tennis Club and the primary key type which is an Integer
 public interface ParadiseTennisClubRepository extends JpaRepository<ParadiseTennisClub, Integer> {
-    // Defining the query methods to find the Paradise Tennis Club entities by
+    // Defining the query method to find the Paradise Tennis Club entities by
     // different criteria shown below
-    List<ParadiseTennisClub> findBySurface(String surface);
-
-    List<ParadiseTennisClub> findBySurfaceAndHours(String surface, String hours);
-
-    List<ParadiseTennisClub> findBySurfaceAndEnvironment(String surface, String environment);
-
-    List<ParadiseTennisClub> findBySurfaceAndHoursAndEnvironment(String surface, String hours, String environment);
 
     List<ParadiseTennisClub> findBySurfaceAndHoursAndEnvironmentAndAvailability(String surface, String hours,
             String environment, String availability);
