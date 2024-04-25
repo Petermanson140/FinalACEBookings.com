@@ -24,6 +24,7 @@ function displayPadelPlusClubData(data) {
       dataContainer.innerHTML += `
             <p><strong>Club Name:</strong> ${club.name}</p>
             <p><strong>Location:</strong> ${club.location}</p>
+            <p><strong>Court Number:</strong> ${club.total}</p>
             <p><strong>Court Number:</strong> ${club.number}</p>
             <p><strong>BookingCourt Id:</strong> ${club.id}</p>
             <p><strong>Surface:</strong> ${club.surface}</p>
