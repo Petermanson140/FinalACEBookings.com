@@ -14,14 +14,7 @@ import java.util.List;
 public interface LakewoodTennisClubRepository extends JpaRepository<LakewoodTennisClub, Integer> {
     // Defining the query methods to find the Lakewood Tennis Club entities by
     // different criterias shown below
-    List<LakewoodTennisClub> findBySurface(String surface);
-
-    List<LakewoodTennisClub> findBySurfaceAndHours(String surface, String hours);
-
-    List<LakewoodTennisClub> findBySurfaceAndEnvironment(String surface, String environment);
-
-    List<LakewoodTennisClub> findBySurfaceAndHoursAndEnvironment(String surface, String hours, String environment);
-
+    
     List<LakewoodTennisClub> findBySurfaceAndHoursAndEnvironmentAndAvailability(String surface, String hours,
             String environment, String availability);
 
