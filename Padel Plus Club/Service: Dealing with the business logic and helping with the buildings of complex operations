@@ -19,24 +19,8 @@ public class PadelPlusClubService {
         this.padelPlusClubRepository = padelPlusClubRepository;
     }
 
-    // Methods to fetch Padel Plus Club data by various entities
-    public List<PadelPlusClub> fetchTennisClubDataBySurface(String surface) {
-        return padelPlusClubRepository.findBySurface(surface);
-    }
-
-    public List<PadelPlusClub> fetchTennisClubDataBySurfaceAndEnvironment(String surface, String environment) {
-        return padelPlusClubRepository.findBySurfaceAndEnvironment(surface, environment);
-    }
-
-    public List<PadelPlusClub> fetchTennisClubDataBySurfaceAndHours(String surface, String hours) {
-        return padelPlusClubRepository.findBySurfaceAndHours(surface, hours);
-    }
-
-    public List<PadelPlusClub> fetchTennisClubDataBySurfaceAndHoursAndEnvironment(String surface, String hours,
-            String environment) {
-        return padelPlusClubRepository.findBySurfaceAndHoursAndEnvironment(surface, hours, environment);
-    }
-
+    // Method to fetch Padel Plus Club data by various entities
+   
     public List<PadelPlusClub> fetchTennisClubDataBySurfaceAndHoursAndEnvironmentAndAvailability(
             String surface, String hours, String environment, String availability) {
         return padelPlusClubRepository.findBySurfaceAndHoursAndEnvironmentAndAvailability(surface, hours,
