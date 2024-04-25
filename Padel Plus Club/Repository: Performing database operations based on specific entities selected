@@ -12,16 +12,9 @@ import java.util.List;
 // Extending the JpaRepository, specifying the exact entity type which is
 // Padel Plus Club and the primary key type which is an Integer
 public interface PadelPlusClubRepository extends JpaRepository<PadelPlusClub, Integer> {
-    // Defining the query methods to find the Padel Plus Club entities by
-    // different criteria shown below
-    List<PadelPlusClub> findBySurface(String surface);
-
-    List<PadelPlusClub> findBySurfaceAndHours(String surface, String hours);
-
-    List<PadelPlusClub> findBySurfaceAndEnvironment(String surface, String environment);
-
-    List<PadelPlusClub> findBySurfaceAndHoursAndEnvironment(String surface, String hours, String environment);
-
+    // Defining the query method to find the Padel Plus Club entities by
+    // different criterias shown below
+  
     List<PadelPlusClub> findBySurfaceAndHoursAndEnvironmentAndAvailability(String surface, String hours,
             String environment, String availability);
 
